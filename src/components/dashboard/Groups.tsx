@@ -300,7 +300,7 @@ const DashboardGroups = () => {
                                                                 <GroupQuestionDialog
                                                                     onSuccess={() => (console.log('Preguntas actualizadas'))}
                                                                     groupId={group.id}
-                                                                    groupName={group.name}
+                                                                    //groupName={group.name}
                                                                     triggerComponent={
                                                                         <Button variant="ghost" size="sm" className="text-sky-500 hover:bg-sky-100" disabled={group.status !== "active"}>
                                                                             <Plus className="w-4 h-4" />
