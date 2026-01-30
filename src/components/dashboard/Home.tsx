@@ -68,8 +68,8 @@ const DashboardHome = () => {
     const [selectedGroup, setSelectedGroup] = useState("");
     const [groupQuestionStats, setGroupQuestionStats] = useState<GroupQuestionStats[]>([]);
     const [selectedQuestions, setSelectedQuestions] = useState<QuestionGroupData[]>([]);
-    const [loadingGroupQuestions, setLoadingGroupQuestions] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+    //const [loadingGroupQuestions, setLoadingGroupQuestions] = useState(false);
+    //const [error, setError] = useState<string | null>(null);
     const [gameStats, setGameStats] = useState<GameStats[]>([]);
     const [loadingGameStats, setLoadingGameStats] = useState(false);
 
@@ -121,11 +121,8 @@ const DashboardHome = () => {
             const data = await response.json();
             setSelectedQuestions(data.data ?? []);
 
-
-            setLoadingGroupQuestions(false);
-            setError(null);
         } catch (err) {
-            setError('Error al cargar las preguntas del grupo.');
+            console.error('Error fetching group questions:', err);
             setSelectedQuestions([]);
         }
     }, []);

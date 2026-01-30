@@ -1,4 +1,3 @@
-
 import { Button } from "../ui/button"
 import { DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Dialog, DialogTrigger } from "../ui/dialog"
 
@@ -23,11 +22,11 @@ interface QuestionGroup {
 // Propiedades del componente
 interface GroupQuestionDialogProps {
     groupId?: string; // Si se recibe es modo edición
-    groupName?: string;
+    //groupName?: string;
     triggerComponent: React.ReactNode;
     onSuccess: () => void;
 }
-const GroupQuestionDialog = ({ groupId, groupName, triggerComponent, onSuccess }: GroupQuestionDialogProps) => {
+const GroupQuestionDialog = ({ groupId, triggerComponent, onSuccess }: GroupQuestionDialogProps) => {
     const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -178,6 +177,7 @@ const GroupQuestionDialog = ({ groupId, groupName, triggerComponent, onSuccess }
         }));
         setNewSelectedQuestions(prev => prev.filter(q => q.question_id !== question.question_id));
         setInsertQuestions((prev) => prev.filter(q => q.question_id !== question.question_id));
+        console.log(insertQuestions);
     };
 
 

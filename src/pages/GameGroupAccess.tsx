@@ -16,7 +16,7 @@ export const GameGroupAccess = () => {
   const { t } = useTranslation();
   const [loadingGroup, setLoadingGroup] = useState(false);
   //const [error, setError] = useState<string | null>(null);
-  const [userName, setUserName] = useState("");
+  //const [userName, setUserName] = useState("");
   const [gameCode, setGameCode] = useState("");
   const [groupData, setGroupData] = useState<Group | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);

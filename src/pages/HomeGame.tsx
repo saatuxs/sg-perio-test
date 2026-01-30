@@ -6,7 +6,7 @@ import type { Game, GameStartResponse } from "@/types/gameType";
 
 import { Key, Heart, HeartCrack, Lightbulb } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { toast } from "sonner";
 import { toastCorrect, toastIncorrect } from "@/lib/gameToasts";
 import { t } from "i18next";
