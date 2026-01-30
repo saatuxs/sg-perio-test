@@ -1,11 +1,12 @@
 import { LogOut, User } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
 import { LanguageSelector } from "../LanguageSelector";
 import { useTranslation } from "react-i18next";
 
 const NavbarHeader = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const stored = localStorage.getItem("auth_user");
   const user = stored ? (JSON.parse(stored) as { name?: string }) : null;
 
@@ -33,7 +34,7 @@ const NavbarHeader = () => {
         <LanguageSelector />
         <Button variant="ghost" className="text-gray-600 hover:text-red-600 hover:bg-red-50 transition-colors cursor-pointer" size="icon" title={t('navbar.logout')} onClick={() => {
           localStorage.removeItem("auth_user");
-          window.location.href = "/login";
+          navigate("/login", { replace: true });
         }}>
           <LogOut className="w-5 h-5" />
         </Button>

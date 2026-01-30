@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,6 +10,7 @@ import { useTranslation } from "react-i18next";
 
 const LoginCard = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -32,7 +34,7 @@ const LoginCard = () => {
       localStorage.setItem("auth_user", JSON.stringify(resp.data));
 
       // Redirige a dashboard 
-      window.location.href = "/dashboard";
+      navigate("/dashboard", { replace: true });
     } catch {
       setError(t('auth.login.connectionError'));
     } finally {
@@ -108,17 +110,17 @@ const LoginCard = () => {
       </CardContent>
 
       <CardFooter className="flex justify-between pt-2 text-sm border-t border-gray-100 mt-4 mx-6">
-        <a
-          href="/forgot-password"
+        <Link
+          to="/forgot-password"
           className="font-medium text-gray-500 hover:text-sky-500 transition-colors"
         >
           {t('auth.login.forgotPassword')}
-        </a>
+        </Link>
         <p className="text-gray-500">
           {t('auth.login.newMember')}
-          <a href="/register" className="ml-1 font-bold text-sky-500 hover:text-sky-600 transition-colors">
+          <Link to="/register" className="ml-1 font-bold text-sky-500 hover:text-sky-600 transition-colors">
             {t('auth.login.register')}
-          </a>
+          </Link>
         </p>
       </CardFooter>
     </Card>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -10,7 +11,7 @@ import {
 } from "../ui/dialog";
 import { Trophy, Clock, Target } from "lucide-react";
 import { GroupStatsDialog } from "./GroupStatsDialog";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface GameEndDialogProps {
   isOpen: boolean;
@@ -31,6 +32,8 @@ export const GameEndDialog = ({
   correctAnswers,
   groupId,
 }: GameEndDialogProps) => {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
   const [showGroupStats, setShowGroupStats] = useState(false);
 
   const handleShowGroupStats = () => {
@@ -95,7 +98,7 @@ export const GameEndDialog = ({
 
           <DialogFooter>
             <Button
-              onClick={() => { window.location.href = "/" }}
+              onClick={() => { navigate("/access", { replace: true }); }}
               className=" bg-blue-500 hover:bg-blue-600 text-white"
             >
               {t("game.gameEnd.backToMenu")}

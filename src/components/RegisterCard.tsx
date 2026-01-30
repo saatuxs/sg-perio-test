@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { CheckCircle, Mail, User, Lock } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Label } from "./ui/label";
@@ -9,6 +10,7 @@ import { useTranslation } from "react-i18next";
 
 const RegisterCard = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,7 +42,7 @@ const RegisterCard = () => {
       // confirmación y redirección automatica al login
       setSuccess(t('auth.register.registrationSuccess'));
       setTimeout(() => {
-        window.location.href = "/login";
+        navigate("/login", { replace: true });
       }, 1800);
 
     } catch {
@@ -180,9 +182,9 @@ const RegisterCard = () => {
       <CardFooter className="flex justify-center pt-2 text-sm border-t border-gray-100 mt-4 mx-6">
         <p className="text-gray-500">
           {t('auth.register.haveAccount')}
-          <a href="/login" className="ml-1 font-bold text-sky-500 hover:text-sky-600 transition-colors">
+          <Link to="/login" className="ml-1 font-bold text-sky-500 hover:text-sky-600 transition-colors">
             {t('auth.register.signIn')}
-          </a>
+          </Link>
         </p>
       </CardFooter>
     </Card>

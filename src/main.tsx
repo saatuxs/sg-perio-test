@@ -8,7 +8,7 @@ import "./i18n/config";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <HashRouter>
+    <HashRouter basename={import.meta.env.BASE_URL}>
       <App />
       <Toaster />
     </HashRouter>
