@@ -4,12 +4,12 @@ import tailwindcss from "@tailwindcss/vite"
 import react from '@vitejs/plugin-react-swc'
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: "/sg-perio-test/",
+export default defineConfig(({ mode }) => ({
+  base: mode === "production" ? "/sg-perio-test/" : "/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-})
+}))
