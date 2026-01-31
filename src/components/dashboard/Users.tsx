@@ -54,7 +54,10 @@ const DashboardUser = () => {
         if (q) params.set("q", q);
 
         const queryString = params.toString();
-        const url = `http://localhost/seriousgame/public/users${queryString ? `?${queryString}` : ""}`;
+        //const url = `http://localhost/seriousgame/public/users${queryString ? `?${queryString}` : ""}`;
+        const url = `https://franklinparrales.es/SGperiodontitis/public/users${queryString ? `?${queryString}` : ""}`;
+
+
 
         await fetch(url)
             .then(response => response.json())
